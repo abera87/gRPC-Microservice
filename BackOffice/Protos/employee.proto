@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+option csharp_namespace = "BackOffice";
+
+package employee;
+
+// The employee service definition
+service Employee {
+    // Send employee details
+    rpc GetAllEmployee (Empty) returns (EmployeesResponse);
+    rpc GetEmployeeById (EmployeeRequest) returns (EmployeeResponse);
+}
+
+// this is an empty message
+message Empty {
+}
+
+// this is request message containing employee id
+message EmployeeRequest {
+    int32 id=1;
+}
+
+// this response message containing employee
+message EmployeeResponse {
+    int32 empid = 1;
+    string name = 2;
+    string address = 3;
+    string phone = 4;
+    int32 deptid = 5;
+}
+
+// this is a list employee response
+message EmployeesResponse {
+    repeated EmployeeResponse employees = 1;
+}

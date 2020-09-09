@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option csharp_namespace = "TeaService";
+
+package tea;
+
+// tea service definition
+service Tea{
+    rpc GetRandomTea (Empty) returns (TeaResponse);
+    rpc GetAllTea (Empty) returns (TeaResponses);
+}
+
+// this is an empty message
+message Empty{}
+
+// this is single tea response
+message TeaResponse{
+    string name=1;
+}
+
+message TeaResponses{
+    repeated TeaResponse teaResponse = 1;
+}
